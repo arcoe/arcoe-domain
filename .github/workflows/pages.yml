@@ -3,6 +3,9 @@ name: Deploy Hexo site to Pages
 on:
   push:
     branches: main
+    paths:
+      - 'source/**'
+      - '_config**.yml'
 
 permissions:
   contents: read
