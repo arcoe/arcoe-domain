@@ -6,6 +6,7 @@ on:
     paths:
       - 'source/**'
       - '_config**.yml'
+      - 'package**.json'
 
 permissions:
   contents: read

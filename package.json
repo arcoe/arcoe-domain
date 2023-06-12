@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "npm ci && hexo generate",
     "dev": "hexo clean && hexo generate && hexo server",
-    "push": "git add . && git commit -m 'backup' && git push origin main"
+    "build": "npm ci && hexo generate",
+    "publish": "git add . && git commit -m 'backup' && git push origin main"
   },
   "hexo": {
     "version": "6.3.0"
