@@ -1,6 +1,6 @@
 {
   "name": "hexo-site",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "hexo clean && hexo generate && hexo server",
