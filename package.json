@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "hexo clean && hexo generate && hexo server",
     "build": "npm ci && hexo generate",
-    "publish": "git add . && git commit -m 'backup' && git push origin main"
+    "publish": "git add . && git commit -m 'update' && git push origin main"
   },
   "hexo": {
     "version": "6.3.0"
