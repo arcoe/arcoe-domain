@@ -37,7 +37,6 @@ jobs:
         with:
           path: ./public
 
-  
   deploy:
     environment:
       name: github-pages
