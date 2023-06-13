@@ -35,26 +35,15 @@ jobs:
         with:
           retention-days: 1
           path: public
-
-  clouflare:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with: 
-          name: artifact
       - name: Deploy to CloudFlare Pages
-        id: deployment
         uses: cloudflare/pages-action@v1
         with: 
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: arcoe
-          directory: ./
+          directory: public
+      - name: Watch
+        run: ls -R
 
   vercel:
     env:
