@@ -55,7 +55,7 @@ jobs:
           directory: ./
       - name: Summary
         run: |
-          echo '### Hello world! ' >> $GITHUB_STEP_SUMMARY
+          echo '### Hello world! ' > $GITHUB_STEP_SUMMARY
           cat $GITHUB_STEP_SUMMARY
         shell: bash
 
