@@ -53,8 +53,6 @@ jobs:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: arcoe
           directory: ./
-      - name: Delete all summary content
-        run: rm $GITHUB_STEP_SUMMARY
 
   vercel:
     env:
