@@ -1,5 +1,5 @@
 ---
-title: 你好！世界
+title: Hexo搭建教程
 abbrlink: 16107
 ---
 欢迎使用[Hexo](https://hexo.io/)! 这是你的第一篇文章. 点击 [文档](https://hexo.io/docs/) 查看更多信息. 如果您在使用Hexo时遇到任何问题，可以在[问题解答](https://hexo.io/docs/troubleshooting.html) 中找到答案或者您可以在 [GitHub](https://github.com/hexojs/hexo/issues)发起Issues.
