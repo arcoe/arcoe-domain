@@ -45,13 +45,12 @@ jobs:
         with: 
           name: artifact
       - name: Deploy to CloudFlare Pages
-        uses: cloudflare/wrangler-action@2.0.0
+        uses: cloudflare/pages-action@v1
         with: 
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: pages deploy ./ --project-name=arcoe
-      - name: Watch
-        run: ls -R
+          projectName: arcoe
+          directory: ./
 
   vercel:
     env:
