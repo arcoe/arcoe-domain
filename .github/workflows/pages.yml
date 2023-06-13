@@ -53,6 +53,11 @@ jobs:
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           projectName: arcoe
           directory: ./
+      - name: Summary
+        run: |
+          cat $GITHUB_STEP_SUMMARY
+          rm $GITHUB_STEP_SUMMARY
+        shell: bash
 
   vercel:
     env:
