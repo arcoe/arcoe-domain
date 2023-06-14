@@ -50,9 +50,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-      - name: Watch
-        run: |
-          echo ${{ steps.upload.outputs }}
 
   clouflare:
     runs-on: ubuntu-latest
