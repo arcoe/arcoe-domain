@@ -34,8 +34,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo ${{ github.env.VERCEL }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build with Hexo
@@ -58,6 +56,7 @@ jobs:
 
   clouflare:
     runs-on: ubuntu-latest
+    if: ${{ github.env.CLOUDFLARE }}
     needs: build
     steps:
       - name: Download artifact
