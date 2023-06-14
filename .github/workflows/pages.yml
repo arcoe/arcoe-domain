@@ -56,7 +56,7 @@ jobs:
 
   clouflare:
     runs-on: ubuntu-latest
-    if: ${{ github.env.CLOUDFLARE }}
+    if: ${{ github.env.CLOUDFLARE == true }}
     needs: build
     steps:
       - name: Download artifact
@@ -73,7 +73,7 @@ jobs:
 
   vercel:
     runs-on: ubuntu-latest
-    if: ${{ github.env.VERCEL }}
+    if: ${{ github.env.VERCEL == true }}
     needs: build
     steps:
       - name: Download artifact
