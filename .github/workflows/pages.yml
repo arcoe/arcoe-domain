@@ -22,12 +22,13 @@ defaults:
   run:
     shell: bash
 
+env:
+  vercel: ${{ false }}
+  cloudflare: ${{ true }}
+
 jobs:
   build:
     name: GitHub Pages
-    outputs:
-      vercel: ${{ false }}
-      cloudflare: ${{ true }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -35,8 +36,8 @@ jobs:
     steps:
       - name: outputs
         run: |
-          echo ${{ needs.build.outputs.vercel }}
-          echo ${{ needs.build.outputs.cloudflare }}
+          echo ${{ env.vercel }}
+          echo ${{ env.cloudflare }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build with Hexo
@@ -75,7 +76,7 @@ jobs:
 
   vercel:
     runs-on: ubuntu-latest
-    if: ${{ needs.build.outputs.vercel }}
+    if: ${{ env.vercel }}
     needs: build
     steps:
       - name: Download artifact
