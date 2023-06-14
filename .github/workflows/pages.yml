@@ -26,8 +26,8 @@ jobs:
   build:
     name: GitHub Pages
     outputs:
-      vercel: 'false'
-      cloudflare: 0
+      vercel: ${{ false }}
+      cloudflare: ${{ true }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -75,7 +75,7 @@ jobs:
 
   vercel:
     runs-on: ubuntu-latest
-    if: ${{ needs.build.outputs.vercel }} == true
+    if: ${{ needs.build.outputs.vercel }}
     needs: build
     steps:
       - name: Download artifact
