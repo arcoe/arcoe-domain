@@ -56,7 +56,7 @@ jobs:
 
   clouflare:
     runs-on: ubuntu-latest
-    if: ${{ github.env.CLOUDFLARE == true }}
+    if: ${{ github.env.CLOUDFLARE == 'true' }}
     needs: build
     steps:
       - name: Download artifact
