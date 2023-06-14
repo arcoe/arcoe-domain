@@ -28,8 +28,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    outputs:
-      build: ${{ steps.upload.outputs }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -74,7 +72,7 @@ jobs:
 
   vercel:
     runs-on: ubuntu-latest
-    if: ${{ needs.build.outputs.build }}
+    needs: build
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
