@@ -23,8 +23,8 @@ defaults:
     shell: bash
 
 env:
-  vercel: ${{ false }}
-  cloudflare: ${{ true }}
+  VERCEL: ${{ false }}
+  CLOUDFLARE: ${{ true }}
 
 jobs:
   build:
@@ -36,8 +36,8 @@ jobs:
     steps:
       - name: outputs
         run: |
-          echo ${{ env.vercel }}
-          echo ${{ env.cloudflare }}
+          echo ${{ env.VERCEL }}
+          echo ${{ env.CLOUDFLARE }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build with Hexo
@@ -76,7 +76,7 @@ jobs:
 
   vercel:
     runs-on: ubuntu-latest
-    if: ${{ env.vercel }}
+    if: ${{ env.VERCEL }}
     needs: build
     steps:
       - name: Download artifact
