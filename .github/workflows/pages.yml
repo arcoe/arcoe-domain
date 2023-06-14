@@ -71,7 +71,7 @@ jobs:
 
   vercel:
     runs-on: ubuntu-latest
-    if: ${{ needs.build.outputs.vercel }}
+    if: ${{ needs.build.outputs.vercel }} == true
     needs: build
     steps:
       - name: Download artifact
