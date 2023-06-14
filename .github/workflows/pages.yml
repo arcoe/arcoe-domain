@@ -25,6 +25,9 @@ defaults:
 jobs:
   build:
     name: GitHub Pages
+    outputs:
+      vercel: true
+      cloudflare: true
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -35,7 +38,6 @@ jobs:
       - name: Build with Hexo
         run: npm run build
       - name: Upload artifact
-        id: upload
         uses: actions/upload-artifact@v3
         with:
           retention-days: 1
@@ -69,6 +71,7 @@ jobs:
 
   vercel:
     runs-on: ubuntu-latest
+    if: ${{ needs.build.outputs.vercel }} == true
     needs: build
     steps:
       - name: Download artifact
@@ -77,7 +80,7 @@ jobs:
           name: artifact
       # 需要.git需要仓库
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25
+        uses: amondnet/vercel-action@v25 #不行。要么自己写一个
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-args: '--prod'
