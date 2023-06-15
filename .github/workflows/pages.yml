@@ -22,9 +22,7 @@ defaults:
   run:
     shell: bash
 
-env: # 有时间删了去仓库 添加变量
-  VERCEL: ${{ false }}
-  CLOUDFLARE: ${{ true }}
+env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
@@ -42,10 +40,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Build with Hexo
         run: npm run build
-      - run: |
-          npm i -g wrangler
-          wrangler pages deploy public --project-name=arcoe
-          ls -R
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
@@ -64,7 +58,6 @@ jobs:
 
   clouflare:
     runs-on: ubuntu-latest
-    if: ${{ github.env.CLOUDFLARE == 'true' }}
     needs: build
     steps:
       - name: Download artifact
@@ -72,12 +65,9 @@ jobs:
         with: 
           name: artifact
       - name: Deploy to CloudFlare Pages
-        uses: cloudflare/pages-action@v1
-        with: 
-          apiToken: ${{ secrets.CF_API_TOKEN }}
-          accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          projectName: arcoe
-          directory: ./
+        run: |
+          npm i -g wrangler
+          wrangler pages deploy . --project-name=arcoe
 
   vercel:
     runs-on: ubuntu-latest
@@ -90,5 +80,5 @@ jobs:
       - name: Deploy to Vercel
         run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Clear Vercel deployment records
-        run: vercel remove --safe --yes --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel remove arcoe --safe --yes --token=${{ secrets.VERCEL_TOKEN }}
       
