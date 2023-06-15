@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo ${{ vars.DEMO[0] }}
+          echo ${{ vars.DEMO }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build with Hexo
