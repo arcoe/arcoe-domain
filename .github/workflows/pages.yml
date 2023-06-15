@@ -25,6 +25,7 @@ defaults:
 env: # 有时间删了去仓库 添加变量
   VERCEL: ${{ false }}
   CLOUDFLARE: ${{ true }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
 
 jobs:
   build:
@@ -34,12 +35,14 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo ${{ vars.DEMO }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Build with Hexo
         run: npm run build
+      - run: |
+          npm i -g wrangler
+          wrangler pages deploy public --project-name=arcoe
+          ls -R
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
