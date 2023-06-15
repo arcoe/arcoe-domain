@@ -26,6 +26,7 @@ env: # 有时间删了去仓库 添加变量
   VERCEL: ${{ false }}
   CLOUDFLARE: ${{ true }}
   CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
 
 jobs:
   build:
