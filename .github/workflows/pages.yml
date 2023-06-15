@@ -25,6 +25,8 @@ defaults:
 env: # 有时间删了去仓库 添加变量
   VERCEL: ${{ false }}
   CLOUDFLARE: ${{ true }}
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
   CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
 
@@ -79,21 +81,14 @@ jobs:
 
   vercel:
     runs-on: ubuntu-latest
-    if: ${{ github.env.VERCEL == true }}
     needs: build
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
         with: 
           name: artifact
-      # 需要.git需要仓库
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v25 #不行。要么自己写一个
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-args: '--prod'
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./
-
+        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Clear Vercel deployment records
+        run: vercel remove --safe --yes --token=${{ secrets.VERCEL_TOKEN }}
       
