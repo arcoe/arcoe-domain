@@ -9,3 +9,6 @@ themes/
 _multiconfig.yml
 .vercel
 .env
+
+# Local Netlify folder
+.netlify
