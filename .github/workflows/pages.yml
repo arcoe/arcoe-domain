@@ -59,6 +59,7 @@ jobs:
         uses: actions/deploy-pages@v2
 
   clouflare:
+    name: CloudFlare Pages
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -72,6 +73,7 @@ jobs:
           wrangler pages deploy . --project-name=arcoe
 
   vercel:
+    name: Vercel
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -85,6 +87,7 @@ jobs:
         run: vercel remove arcoe --safe --yes --token=${{ secrets.VERCEL_TOKEN }}
 
   netlify:
+    name: Netlify
     runs-on: ubuntu-latest
     needs: build
     steps:
