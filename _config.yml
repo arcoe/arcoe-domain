@@ -103,3 +103,13 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+clean_css:
+  exclude: 
+    - '*.min.css'
+uglify:
+  mangle: true
+  exclude:
+    - '*.min.js'
+html_minifier:  
+  exclude:
