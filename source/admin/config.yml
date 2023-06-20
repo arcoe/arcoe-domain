@@ -1,0 +1,13 @@
+backend:
+  name: git-gateway
+  branch: main
+  identity_url: https://arcoe.netlify.app/.netlify/identity
+  gateway_url: https://arcoe.netlify.app/.netlify/git
+
+media_folder: "source/images/uploads"
+
+collections:
+  - name: "post" # Used in routes, e.g., /admin/collections/blog
+    label: "文章" # Used in the UI
+    folder: "source/_posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
