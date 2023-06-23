@@ -1,9 +1,16 @@
 ---
 title: {{ title }}
 date: {{ date }}
-description: 
-tags:
 author:
-post_link: 
+post_link:
+description:
 direction:
+header:
+mathjax:
+sidebar:
+copyright:
+sticky:
+quicklink:
+reward_settings:
+toc:
 ---

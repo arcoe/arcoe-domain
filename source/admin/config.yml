@@ -15,4 +15,22 @@ collections:
     fields:
       - {label: "标题", name: "title", widget: "string"}
       - {label: "id", name: "abbrlink", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "作者", name: "author", widget: "string"}
+      - {label: "文章链接", name: "post_link", widget: "string"}
+      - {label: "摘要", name: "description", widget: "string"}
+      - {label: "direction", name: "direction", widget: "string"}
+      - {label: "Header", name: "header", widget: "boolean", default: true}
+      - {label: "Mathjax", name: "mathjax", widget: "boolean", default: true}
+      - {label: "侧边栏", name: "sidebar", widget: "boolean", default: true}
+      - {label: "版权", name: "copyright", widget: "boolean", default: true}
+      - {label: "权重",name: "sticky",widget: "number",default: 0,value_type: "int"}
+      - label: "快速链接"
+        name: "quicklink"
+        widget: "object"
+        summary: '{{quicklink.enable}}: {{quicklink.deplay}}: {{quicklink.timeout}}: {{quicklink.priority}}'
+        fields:
+          - {label: "是否启用", name: "enable", widget: "boolean", default: true}
+          - {label: "deplay", name: "deplay", widget: "boolean", default: true}
+          - {label: "timeout",name: "timeout",widget: "number",default: 3000,value_type: "int"}
+          - {label: "priority", name: "priority", widget: "boolean", default: true}
+      - {label: "内容", name: "body", widget: "markdown"}
