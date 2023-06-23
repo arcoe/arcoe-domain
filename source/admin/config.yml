@@ -11,3 +11,9 @@ collections:
     label: "文章" # Used in the UI
     folder: "source/_posts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Title", name: "标题", widget: "string"}
+      - {label: "Publish Date", name: "日期", widget: "datetime"}
+      - {label: "Body", name: "内容", widget: "markdown"}
