@@ -13,7 +13,6 @@ collections:
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}"
     fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
       - {label: "标题", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "id", name: "abbrlink", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
